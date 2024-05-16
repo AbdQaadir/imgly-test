@@ -33,10 +33,10 @@ body {
   padding: 0;
 }
 
-.container {
+#container {
   width: 100%;
   height: 100vh;
-  padding: 20px;
+  padding: 20px 10px;
 }
 
 .go3456988929 {

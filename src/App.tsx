@@ -8,7 +8,7 @@ const { store }: { store: StoreType } = createPolotnoApp({
   container: document.getElementById("root"),
   key: "dtO7WTTyLFznFivtFBSn",
   showCredit: false,
-  sections: ["photos", "text", "templates", "shapes", "layers"],
+  sections: ["photos", "text", "templates"],
 });
 
 // add page and element instantly
@@ -16,8 +16,8 @@ store.addPage();
 
 function App() {
   return (
-    <div className="container">
-      <Polotno store={store} />;
+    <div id="container">
+      <Polotno store={store} />
     </div>
   );
 }
