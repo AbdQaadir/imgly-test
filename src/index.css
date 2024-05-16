@@ -15,6 +15,8 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -30,8 +32,22 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .container {
   width: 100%;
   height: 100vh;
   padding: 20px;
+}
+
+.go3456988929 {
+  height: auto !important;
+}
+
+.go1236784588 {
+  overflow: auto !important;
+}
+
+.go1786107568 {
+  height: 50vh !important;
+  overflow: auto !important;
 }
