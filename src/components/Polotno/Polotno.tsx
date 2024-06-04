@@ -4,7 +4,6 @@ import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
 import { Toolbar } from "polotno/toolbar/toolbar";
 import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
 import {
-  DEFAULT_SECTIONS,
   ElementsSection,
   PhotosSection,
   SidePanel,
