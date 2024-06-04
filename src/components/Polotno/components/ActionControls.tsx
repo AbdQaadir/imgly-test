@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
-import { Toolbar } from "polotno/toolbar/toolbar";
-import { ZoomButtons } from "polotno/toolbar/zoom-buttons";
-import { SidePanel } from "polotno/side-panel";
-import { Workspace } from "polotno/canvas/workspace";
 import { StoreType } from "polotno/model/store";
-import { DownloadButton } from "polotno/toolbar/download-button";
+import DownloadButton from "polotno/toolbar/download-button";
 import { Button } from "@blueprintjs/core";
 
 type PropsType = {
@@ -54,19 +49,4 @@ const ActionControls = ({ store }: PropsType) => {
   );
 };
 
-function Polotno({ store }: PropsType) {
-  return (
-    <PolotnoContainer style={{ width: "100%", height: "100%" }}>
-      <SidePanelWrap style={{ height: "100%" }}>
-        <SidePanel store={store} />
-      </SidePanelWrap>
-      <WorkspaceWrap style={{ height: "100%" }}>
-        <Toolbar store={store} components={{ ActionControls }} />
-        <Workspace store={store} />
-        <ZoomButtons store={store} />
-      </WorkspaceWrap>
-    </PolotnoContainer>
-  );
-}
-
-export default Polotno;
+export default ActionControls;

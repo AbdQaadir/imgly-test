@@ -207,7 +207,6 @@ const config: CreateConfiguration = {
 function ImgLy() {
   const cesdk_container = useRef(null);
   const [cesdk, setCesdk] = useState<CreativeEditorSDK | null>(null);
-  console.log({ cesdk });
   useEffect(() => {
     if (!cesdk_container.current) return;
 
@@ -252,6 +251,10 @@ function ImgLy() {
             return undefined;
           }
         );
+
+        // Add variables
+        instance.engine.variable.setString("first_name", "Recorder First Name");
+
         // highlight-add-local-source
         instance.engine.asset.addAssetToSource("my-templates", {
           id: "template1",
