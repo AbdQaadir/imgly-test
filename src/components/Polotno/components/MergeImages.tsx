@@ -10,14 +10,27 @@ type SectionTabProps = {
   onClick: any;
   active: boolean;
 };
+type CustomItemProps = {
+  store: StoreType;
+  variableName: `${string}-${string}` | (string & object);
+  displayName: string;
+  imageUrl: string;
+  isRounded?: boolean;
+};
 
-const QRCodeSection = ({ store }: { store: StoreType }) => {
+const CustomItem = ({
+  displayName,
+  variableName,
+  store,
+  imageUrl,
+  isRounded,
+}: CustomItemProps) => {
   return (
     <div
       style={{
         width: "150px",
-        height: "150px",
-        overflow: "hidden",
+        minHeight: "150px",
+        borderRadius: isRounded ? "50%" : "0",
       }}
       role="button"
       tabIndex={0}
@@ -37,11 +50,11 @@ const QRCodeSection = ({ store }: { store: StoreType }) => {
 
         store.activePage.addElement({
           type: "image",
-          src: "https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/qrCode_NotRounded_mo1d9j.png",
+          src: imageUrl,
           x: 100,
           y: 100,
           custom: {
-            variable: "qr-code",
+            variable: variableName,
           },
           width: 150,
           height: 150,
@@ -56,99 +69,11 @@ const QRCodeSection = ({ store }: { store: StoreType }) => {
         });
       }}
     >
-      <img
-        src="https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/qrCode_NotRounded_mo1d9j.png"
-        alt=""
-        width="100%"
-        height="100%"
-      />
-    </div>
-  );
-};
+      <div>
+        <img src={imageUrl} alt="" width="100%" height="100%" />
+      </div>
 
-const VideoThumbnailSection = ({ store }: { store: StoreType }) => {
-  return (
-    <div
-      style={{
-        width: "150px",
-        height: "150px",
-        overflow: "hidden",
-      }}
-      role="button"
-      tabIndex={0}
-      aria-hidden="true"
-      onClick={() => {
-        store.activePage.addElement({
-          type: "image",
-          src: "https://res.cloudinary.com/dt4bove91/image/upload/v1719589627/videoThumbnail_NotRounded_yh5cd7.png",
-          x: 100,
-          y: 100,
-          custom: {
-            variable: "video-thumbnail",
-          },
-          width: 150,
-          height: 150,
-          // can element be moved and rotated
-          draggable: true,
-          // can we change content of element?
-          contentEditable: false,
-          // can we change style of element?
-          styleEditable: false,
-          // can we resize element?
-          resizable: true,
-        });
-      }}
-    >
-      <img
-        src="https://res.cloudinary.com/dt4bove91/image/upload/v1719589627/videoThumbnail_NotRounded_yh5cd7.png"
-        alt=""
-        width="100%"
-        height="100%"
-      />
-    </div>
-  );
-};
-
-const WorkspaceLogoSection = ({ store }: { store: StoreType }) => {
-  return (
-    <div
-      style={{
-        width: "150px",
-        height: "150px",
-        overflow: "hidden",
-        display: "block",
-      }}
-      role="button"
-      tabIndex={0}
-      aria-hidden="true"
-      onClick={() => {
-        store.activePage.addElement({
-          type: "image",
-          src: "https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/workspaceLogo_NotRounded_z0ighr.png",
-          x: 100,
-          y: 100,
-          custom: {
-            variable: "workspace-logo",
-          },
-          width: 150,
-          height: 150,
-          // can element be moved and rotated
-          draggable: true,
-          // can we change content of element?
-          contentEditable: false,
-          // can we change style of element?
-          styleEditable: false,
-          // can we resize element?
-          resizable: true,
-        });
-      }}
-    >
-      <img
-        src="https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/workspaceLogo_NotRounded_z0ighr.png"
-        alt=""
-        width="100%"
-        height="100%"
-      />
+      <p>{displayName}</p>
     </div>
   );
 };
@@ -173,9 +98,26 @@ const MergeImagesSection = {
           gap: "10px",
         }}
       >
-        <QRCodeSection store={store} />
-        <VideoThumbnailSection store={store} />
-        <WorkspaceLogoSection store={store} />
+        <CustomItem
+          store={store}
+          variableName="qr-code"
+          displayName="QR Code"
+          imageUrl="https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/qrCode_NotRounded_mo1d9j.png"
+        />
+
+        <CustomItem
+          store={store}
+          variableName="workspace-logo"
+          displayName="Workspace Logo"
+          imageUrl="https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/workspaceLogo_NotRounded_z0ighr.png"
+        />
+
+        <CustomItem
+          store={store}
+          variableName="video-thumbnail"
+          displayName="Video Thumbnail"
+          imageUrl="https://res.cloudinary.com/dt4bove91/image/upload/v1719589627/videoThumbnail_NotRounded_yh5cd7.png"
+        />
       </div>
     );
   }),
