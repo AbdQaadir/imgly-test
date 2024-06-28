@@ -73,7 +73,7 @@ const CustomItem = ({
         <img src={imageUrl} alt="" width="100%" height="100%" />
       </div>
 
-      <p>{displayName}</p>
+      <p style={{ fontWeight: 500 }}>{displayName}</p>
     </div>
   );
 };
