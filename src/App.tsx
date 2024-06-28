@@ -1,20 +1,28 @@
-import { createPolotnoApp } from "polotno";
 import { setUploadFunc } from "polotno/config";
 import Polotno from "./components/Polotno/Polotno";
 
 import "@blueprintjs/core/lib/css/blueprint.css";
-import { StoreType } from "polotno/model/store";
+import createStore from "polotno/model/store";
 
-const { store }: { store: StoreType } = createPolotnoApp({
-  container: document.getElementById("root"),
+const store = createStore({
   key: "dtO7WTTyLFznFivtFBSn",
   showCredit: false,
-  sections: ["photos", "text", "templates"],
 });
 
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 // Set the size of the canvas
+store.setSize(900, 600, true);
+
+// Add the pages
+store.addPage({
+  custom: { name: "Front" },
+});
+
+store.addPage({
+  custom: { name: "Back" },
+});
+
 store.setSize(900, 600, true);
 
 // define our upload function
@@ -45,7 +53,14 @@ setUploadFunc(upload);
 function App() {
   return (
     <div id="container">
-      <Polotno store={store} />
+      <Polotno
+        store={store}
+        maxPages={2}
+        canDeletePage={true}
+        showDownloadButton={true}
+        showThumbnailButton={true}
+        showJsonButton={true}
+      />
     </div>
   );
 }
