@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 import { observer } from "mobx-react-lite";
 
 import { Button, Tooltip } from "@blueprintjs/core";
