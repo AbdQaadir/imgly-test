@@ -101,7 +101,7 @@ const MergeImagesSection = {
         <CustomItem
           store={store}
           variableName="qr-code"
-          displayName="QR Code"
+          displayName="Video QR code"
           imageUrl="https://res.cloudinary.com/dt4bove91/image/upload/v1719589626/qrCode_NotRounded_mo1d9j.png"
         />
 
