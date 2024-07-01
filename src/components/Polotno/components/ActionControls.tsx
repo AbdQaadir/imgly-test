@@ -26,14 +26,14 @@ const ActionControls = ({ store }: PropsType) => {
   };
 
   const handleSaveTemplateThumbnail = async () => {
-    store
-      .saveAsImage()
-      .then((response) => {
-        console.log({ response });
-      })
-      .catch((error) => {
-        console.log({ error });
-      });
+    store.saveAsImage({
+      pageId: store.pages[0].id,
+      fileName: `${store.pages[0]?.custom?.name || "Front"}.png`,
+    });
+    store.saveAsImage({
+      pageId: store.pages[1].id,
+      fileName: `${store.pages[1]?.custom?.name || "Back"}.png`,
+    });
   };
   return (
     <div style={{ display: "flex", gap: "4px" }}>
@@ -43,7 +43,7 @@ const ActionControls = ({ store }: PropsType) => {
       </Button>
 
       <Button intent="primary" onClick={() => handleSaveTemplateThumbnail()}>
-        Save thumbnail
+        Save thumbnails
       </Button>
     </div>
   );
