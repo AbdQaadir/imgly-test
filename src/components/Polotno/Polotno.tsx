@@ -11,7 +11,7 @@ import { StoreType } from "polotno/model/store";
 
 import MergeImages from "./components/MergeImages";
 import ActionControls from "./components/ActionControls";
-import { PageControls } from "./components";
+import { ImportTemplateSection, PageControls } from "./components";
 
 type PropsType = {
   store: StoreType;
@@ -41,7 +41,11 @@ function Polotno({
         <SidePanel
           store={store}
           sections={
-            [...DEFAULT_SECTIONS, MergeImages] as typeof DEFAULT_SECTIONS
+            [
+              ...DEFAULT_SECTIONS,
+              MergeImages,
+              ImportTemplateSection,
+            ] as typeof DEFAULT_SECTIONS
           }
         />
       </SidePanelWrap>
